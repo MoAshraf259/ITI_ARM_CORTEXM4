@@ -1,0 +1,6 @@
+"./MCAL/GPIO/stm32f446_gpio.o"
+"./MCAL/RCC/stm32f446_rcc.o"
+"./Src/main.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f446retx.o"

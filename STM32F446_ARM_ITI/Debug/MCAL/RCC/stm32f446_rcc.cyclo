@@ -1,0 +1,6 @@
+stm32f446_rcc.c:10:6:SetClockSystem	1
+stm32f446_rcc.c:44:6:RCC_EnablePeripheral	5
+stm32f446_rcc.c:71:6:RCC_DisablePeripheral	5
+stm32f446_rcc.c:100:10:RCC_GetPCLK1Value	6
+stm32f446_rcc.c:156:10:RCC_GetPCLK2Value	4
+stm32f446_rcc.c:203:11:RCC_GetPLLOutputClock	1

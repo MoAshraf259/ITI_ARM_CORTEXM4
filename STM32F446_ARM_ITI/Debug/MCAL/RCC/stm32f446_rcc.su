@@ -1,0 +1,6 @@
+../MCAL/RCC/stm32f446_rcc.c:10:6:SetClockSystem	4	static
+../MCAL/RCC/stm32f446_rcc.c:44:6:RCC_EnablePeripheral	16	static
+../MCAL/RCC/stm32f446_rcc.c:71:6:RCC_DisablePeripheral	16	static
+../MCAL/RCC/stm32f446_rcc.c:100:10:RCC_GetPCLK1Value	24	static
+../MCAL/RCC/stm32f446_rcc.c:156:10:RCC_GetPCLK2Value	24	static
+../MCAL/RCC/stm32f446_rcc.c:203:11:RCC_GetPLLOutputClock	4	static
