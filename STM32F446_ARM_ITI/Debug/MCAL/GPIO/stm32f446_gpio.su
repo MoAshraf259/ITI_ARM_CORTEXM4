@@ -1,4 +1,7 @@
 ../MCAL/GPIO/stm32f446_gpio.c:11:13:GPIO_EnablePeriClock	16	static
-../MCAL/GPIO/stm32f446_gpio.c:43:6:GPIO_Init	16	static
-../MCAL/GPIO/stm32f446_gpio.c:64:6:GPIO_WriteToPin	16	static
-../MCAL/GPIO/stm32f446_gpio.c:74:9:GPIO_ReadFromPin	16	static
+../MCAL/GPIO/stm32f446_gpio.c:43:6:GPIO_Init	24	static
+../MCAL/GPIO/stm32f446_gpio.c:74:6:GPIO_WriteToPin	16	static
+../MCAL/GPIO/stm32f446_gpio.c:84:6:GPIO_WriteToPort	16	static
+../MCAL/GPIO/stm32f446_gpio.c:89:9:GPIO_ReadFromPin	16	static
+../MCAL/GPIO/stm32f446_gpio.c:101:10:GPIO_ReadFromPort	24	static
+../MCAL/GPIO/stm32f446_gpio.c:110:6:GPIO_TogglePin	16	static

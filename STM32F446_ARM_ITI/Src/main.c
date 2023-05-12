@@ -39,5 +39,5 @@ int main(void)
 
 	GPIO_WriteToPin(GPIOA, 5, SET);
     /* Loop forever */
-	for(;;);
+	//for(;;);
 }

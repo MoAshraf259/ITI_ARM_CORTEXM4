@@ -61,8 +61,8 @@ all: main-build
 main-build: STM32F446_ARM_ITI.elf secondary-outputs
 
 # Tool invocations
-STM32F446_ARM_ITI.elf STM32F446_ARM_ITI.map: $(OBJS) $(USER_OBJS) D:\github_ITI_ARM\ITI_ARM_CORTEXM4\STM32F446_ARM_ITI\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32F446_ARM_ITI.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\github_ITI_ARM\ITI_ARM_CORTEXM4\STM32F446_ARM_ITI\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F446_ARM_ITI.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32F446_ARM_ITI.elf STM32F446_ARM_ITI.map: $(OBJS) $(USER_OBJS) D:\Embedded_ITI\ARM_GitHub\ITI_ARM_CORTEXM4\STM32F446_ARM_ITI\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32F446_ARM_ITI.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\Embedded_ITI\ARM_GitHub\ITI_ARM_CORTEXM4\STM32F446_ARM_ITI\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F446_ARM_ITI.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
