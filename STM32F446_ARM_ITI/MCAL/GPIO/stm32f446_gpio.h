@@ -52,4 +52,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle);
 
 void GPIO_WriteToPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t value);
 uint8_t GPIO_ReadFromPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber);
+
+void GPIO_TogglePin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber);
+uint16_t GPIO_ReadFromPort(GPIO_RegDef_t *pGPIOx);
+void GPIO_WriteToPort(GPIO_RegDef_t *pGPIOx,uint16_t value);
 #endif /* GPIO_STM32F446_GPIO_H_ */

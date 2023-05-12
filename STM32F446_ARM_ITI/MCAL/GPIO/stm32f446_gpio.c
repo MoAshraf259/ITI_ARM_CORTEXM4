@@ -42,24 +42,41 @@ static void GPIO_EnablePeriClock(GPIO_Handle_t *pGPIO_Handle)
 }
 void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 {
+	uint32_t temp=0;
 
-		GPIO_EnablePeriClock(pGPIO_Handle);
+	/*Enable the RCC clock for the GPIO*/
+	GPIO_EnablePeriClock(pGPIO_Handle);
 
-		//Clear the 2 bits of the bit number mode
-		pGPIO_Handle->pGPIOx->MODER &=~( 3 << 2*pGPIO_Handle->GPIO_Config.PinNumber);
-		// set the value of the mode entered by user
-		pGPIO_Handle->pGPIOx->MODER |= (pGPIO_Handle->GPIO_Config.Mode<<2*pGPIO_Handle->GPIO_Config.PinNumber);
+	if(pGPIO_Handle->GPIO_Config.Mode <=GPIO_MODE_Analog)
+	{
+		/*This part is to SET the mode of the GPIO Pin*/
+		temp=(pGPIO_Handle->GPIO_Config.Mode << 2*pGPIO_Handle->GPIO_Config.PinNumber);
+		pGPIO_Handle->pGPIOx->MODER &= ~(3<<2*pGPIO_Handle->GPIO_Config.PinNumber);
+		pGPIO_Handle->pGPIOx->MODER |=temp ;
 
-		//Choose the PullUpPullDown Register
-		pGPIO_Handle->pGPIOx->PUPDR |= (pGPIO_Handle->GPIO_Config.PUPD<<pGPIO_Handle->GPIO_Config.PinNumber);
+	}
+	else{
+		//later
+	}
 
-		//Choose the pin type whether it`s open drain or PushPull
-		pGPIO_Handle->pGPIOx->OTYPER |= (pGPIO_Handle->GPIO_Config.OT_Type<<pGPIO_Handle->GPIO_Config.PinNumber);
+	/*This part for configurting the OUTPUT pin type*/
+	temp= pGPIO_Handle->GPIO_Config.OT_Type <<pGPIO_Handle->GPIO_Config.PinNumber;
+	pGPIO_Handle->pGPIOx->OTYPER &= ~(1<<pGPIO_Handle->GPIO_Config.PinNumber);
+	pGPIO_Handle->pGPIOx->OTYPER |= temp;
+	/*This part is to configure the speed of the pin*/
+	temp= pGPIO_Handle->GPIO_Config.SPEED <<2*pGPIO_Handle->GPIO_Config.PinNumber;
+	pGPIO_Handle->pGPIOx->OTYPER &= ~(3<<2*pGPIO_Handle->GPIO_Config.PinNumber);
+	pGPIO_Handle->pGPIOx->OTYPER |= temp;
 
-		//Set the speed of the pin
-		pGPIO_Handle->pGPIOx->OSPEEDR &=~ (3<<2*pGPIO_Handle->GPIO_Config.PinNumber);
-		pGPIO_Handle->pGPIOx->OSPEEDR |= (pGPIO_Handle->GPIO_Config.SPEED<<2*pGPIO_Handle->GPIO_Config.PinNumber);
+	 /*This part is to Configure the pin PullUp PullDownResistor*/
+	temp= pGPIO_Handle->GPIO_Config.PUPD <<pGPIO_Handle->GPIO_Config.PinNumber;
+	pGPIO_Handle->pGPIOx->PUPDR &= ~(1<<pGPIO_Handle->GPIO_Config.PinNumber);
+	pGPIO_Handle->pGPIOx->PUPDR |= temp;
 
+
+	/*Alternate MODE later */
+
+	/*External Interrupt Later*/
 }
 void GPIO_WriteToPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t value)
 {
@@ -69,6 +86,11 @@ void GPIO_WriteToPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t value)
 	else{
 		pGPIOx->ODR |=(1<<PinNumber);
 	}
+}
+
+void GPIO_WriteToPort(GPIO_RegDef_t *pGPIOx,uint16_t value)
+{
+	pGPIOx->ODR =value;
 }
 
 uint8_t GPIO_ReadFromPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber)
@@ -82,4 +104,17 @@ uint8_t GPIO_ReadFromPin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber)
 		return RESET;
 	}
 
+}
+uint16_t GPIO_ReadFromPort(GPIO_RegDef_t *pGPIOx)
+{
+	uint16_t value;
+
+	value=(uint16_t) pGPIOx->IDR;
+
+	return value;
+}
+
+void GPIO_TogglePin(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber)
+{
+	pGPIOx->ODR ^=(1<<PinNumber);
 }
