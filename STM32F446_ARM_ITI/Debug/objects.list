@@ -1,3 +1,7 @@
+"./HAL/Keypad/keypad.o"
+"./HAL/LCD/LCD.o"
+"./HAL/LEDs/leds.o"
+"./HAL/SSD/ssd.o"
 "./MCAL/GPIO/stm32f446_gpio.o"
 "./MCAL/RCC/stm32f446_rcc.o"
 "./Src/main.o"

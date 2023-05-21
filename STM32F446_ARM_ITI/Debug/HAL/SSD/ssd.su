@@ -1,0 +1,2 @@
+../HAL/SSD/ssd.c:12:6:SSD_Init	8	static
+../HAL/SSD/ssd.c:45:6:SSDDispNum	16	static

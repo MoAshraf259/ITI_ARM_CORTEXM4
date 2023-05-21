@@ -1,0 +1,11 @@
+LCD.c:14:6:LCD_Init	1
+LCD.c:101:6:LCD_SendCMD	1
+LCD.c:138:6:LCD_SendChar	1
+LCD.c:176:6:LCD_SendString	2
+LCD.c:186:6:LCD_SendSpecialCharacter	3
+LCD.c:203:6:clr_lcd	1
+LCD.c:212:6:write_4_bits	1
+LCD.c:220:6:lcd_set_cursor	3
+LCD.c:238:6:LCD_SendNumber	24
+LCD.c:339:13:mdelay	2
+LCD.c:344:13:udelay	2

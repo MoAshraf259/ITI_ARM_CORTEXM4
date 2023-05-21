@@ -13,6 +13,10 @@ RM := rm -rf
 -include Src/subdir.mk
 -include MCAL/RCC/subdir.mk
 -include MCAL/GPIO/subdir.mk
+-include HAL/SSD/subdir.mk
+-include HAL/LEDs/subdir.mk
+-include HAL/LCD/subdir.mk
+-include HAL/Keypad/subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)

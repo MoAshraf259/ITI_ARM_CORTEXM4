@@ -15,7 +15,8 @@
 #define RESET	0
 #define ENABLE	SET
 #define DISABLE	RESET
-
+#define HIGH	ENABLE
+#define LOW		DISABLE
 /*
  * AHBx and APBx Bus Peripheral base addresses
  */
@@ -110,6 +111,24 @@ typedef struct
 
 #define RCC 				((RCC_RegDef_t*)RCC_BASEADDR)
 
+
+
+#define GPIO_PIN_NO_0		0
+#define GPIO_PIN_NO_1		1
+#define GPIO_PIN_NO_2		2
+#define GPIO_PIN_NO_3		3
+#define GPIO_PIN_NO_4		4
+#define GPIO_PIN_NO_5		5
+#define GPIO_PIN_NO_6		6
+#define GPIO_PIN_NO_7		7
+#define GPIO_PIN_NO_8		8
+#define GPIO_PIN_NO_9		9
+#define GPIO_PIN_NO_10		10
+#define GPIO_PIN_NO_11		11
+#define GPIO_PIN_NO_12		12
+#define GPIO_PIN_NO_13		13
+#define GPIO_PIN_NO_14		14
+#define GPIO_PIN_NO_15		15
 #include "stm32f446_rcc.h"
 #include "stm32f446_gpio.h"
 #endif /* STM32F446_H_ */

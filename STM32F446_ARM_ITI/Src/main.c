@@ -37,7 +37,9 @@ int main(void)
 
 	GPIO_MainInit();
 
-	GPIO_WriteToPin(GPIOA, 5, SET);
+	RCC->PLLCFGR |= (336<<5);
+	//GPIO_WriteToPin(GPIOA, 5, SET);
+
     /* Loop forever */
 	//for(;;);
 }
