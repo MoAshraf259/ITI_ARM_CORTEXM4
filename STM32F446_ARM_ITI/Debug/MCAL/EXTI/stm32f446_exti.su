@@ -1,0 +1,2 @@
+../MCAL/EXTI/stm32f446_exti.c:9:6:EXTI_Init	24	static
+../MCAL/EXTI/stm32f446_exti.c:37:6:EXTI_ClearPending	16	static

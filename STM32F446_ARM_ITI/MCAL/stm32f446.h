@@ -44,6 +44,11 @@
 #define RCC_BASEADDR                     (AHB1PERIPH_BASEADDR + 0x3800)
 
 
+#define NVIC_BASEADDR					 (0xE000E100)
+#define EXTI_BASEADDR					 (0x40013C00)
+
+#define SYSCFG_BASEADDR					(0x40013800)
+
 typedef struct
 {
 	__vo uint32_t MODER;                 /*!< GPIO port mode register,      Address offset: 0x00      */
@@ -99,6 +104,37 @@ typedef struct
 
 } RCC_RegDef_t;
 
+typedef struct{
+	__vo uint32_t ISER[32];
+	__vo uint32_t ICER[32];
+	__vo uint32_t ISPR[32];
+	__vo uint32_t ICPR[32];
+	__vo uint32_t IABR[64];
+	__vo uint32_t IPR[60];
+}NVIC_RegDef_t;
+
+typedef struct{
+	__vo uint32_t IMR;
+	__vo uint32_t EMR;
+	__vo uint32_t RTSR;
+	__vo uint32_t FTSR;
+	__vo uint32_t SWIER;
+	__vo uint32_t PR;
+}EXTI_RegDef_t;
+
+
+typedef struct{
+	__vo uint32_t SYSCFG;
+	__vo uint32_t PMC;
+	__vo uint32_t EXTICR[4];
+	__vo uint32_t CMPCR;
+	__vo uint32_t CFGR;
+}SYSCFG_RegDef_t;
+
+#define SYSCFG				((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
+#define EXTI				((EXTI_RegDef_t*)EXTI_BASEADDR)
+#define NVIC				((NVIC_RegDef_t*)NVIC_BASEADDR)
+
 
 #define GPIOA  				((GPIO_RegDef_t*)GPIOA_BASEADDR)
 #define GPIOB  				((GPIO_RegDef_t*)GPIOB_BASEADDR)
@@ -111,7 +147,7 @@ typedef struct
 
 #define RCC 				((RCC_RegDef_t*)RCC_BASEADDR)
 
-
+#define RCB_AIRCR			(*((__vo uint32_t*)0xE000ED00+0x0C))
 
 #define GPIO_PIN_NO_0		0
 #define GPIO_PIN_NO_1		1
@@ -129,6 +165,18 @@ typedef struct
 #define GPIO_PIN_NO_13		13
 #define GPIO_PIN_NO_14		14
 #define GPIO_PIN_NO_15		15
+
+#define GPIO_PORT_TO_NUMBER(x)		((x==GPIOA)? 0:\
+									(x==GPIOB)? 1:\
+									(x==GPIOC)?	2:\
+									(x==GPIOD)?	3:\
+									(x==GPIOE)?	4:\
+									(x==GPIOF)?	5:\
+									(x==GPIOG)?	6:\
+									(x==GPIOH)?	7:0)
+
 #include "stm32f446_rcc.h"
 #include "stm32f446_gpio.h"
+#include "stm32f446_nvic.h"
+#include "stm32f446_exti.h"
 #endif /* STM32F446_H_ */

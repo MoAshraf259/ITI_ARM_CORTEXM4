@@ -26,7 +26,9 @@ HAL/Keypad \
 HAL/LCD \
 HAL/LEDs \
 HAL/SSD \
+MCAL/EXTI \
 MCAL/GPIO \
+MCAL/NVIC \
 MCAL/RCC \
 Src \
 Startup \

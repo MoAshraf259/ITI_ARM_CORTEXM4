@@ -47,18 +47,13 @@ void GPIO_Init(GPIO_Handle_t *pGPIO_Handle)
 	/*Enable the RCC clock for the GPIO*/
 	GPIO_EnablePeriClock(pGPIO_Handle);
 
-	if(pGPIO_Handle->GPIO_Config.Mode <= GPIO_MODE_Analog)
-	{
-		/*This part is to SET the mode of the GPIO Pin*/
+
+	/*This part is to SET the mode of the GPIO Pin*/
 		temp=(pGPIO_Handle->GPIO_Config.Mode << 2*pGPIO_Handle->GPIO_Config.PinNumber);
 		pGPIO_Handle->pGPIOx->MODER &= ~(3<<2*pGPIO_Handle->GPIO_Config.PinNumber);
 		pGPIO_Handle->pGPIOx->MODER |=temp ;
 
-	}
 
-	else{
-		//later
-	}
 
 	/*This part for configuration of the OUTPUT pin type*/
 

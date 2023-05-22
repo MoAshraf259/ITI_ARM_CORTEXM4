@@ -12,7 +12,9 @@ RM := rm -rf
 -include Startup/subdir.mk
 -include Src/subdir.mk
 -include MCAL/RCC/subdir.mk
+-include MCAL/NVIC/subdir.mk
 -include MCAL/GPIO/subdir.mk
+-include MCAL/EXTI/subdir.mk
 -include HAL/SSD/subdir.mk
 -include HAL/LEDs/subdir.mk
 -include HAL/LCD/subdir.mk

@@ -1,0 +1,5 @@
+stm32f446_nvic.c:15:6:NVIC_Init	1
+stm32f446_nvic.c:21:6:NVIC_ControlPeripheral	2
+stm32f446_nvic.c:35:6:NVIC_ControlPendingFlag	2
+stm32f446_nvic.c:48:9:NVIC_ReadActive	1
+stm32f446_nvic.c:62:6:NVIC_SetPriority	1

@@ -2,7 +2,7 @@
  * stm32f446_rcc.h
  *
  *  Created on: May 4, 2023
- *      Author: moham
+ *      Author: Mohamed Ashraf
  */
 
 #ifndef RCC_STM32F446_RCC_H_
@@ -59,7 +59,7 @@
 #define APB2_ADC2		9
 #define APB2_SPI1		12
 #define APB2_SPI4		13
-
+#define APB2_SYSCFG		14
 
 
 

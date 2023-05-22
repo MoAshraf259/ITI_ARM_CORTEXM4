@@ -30,16 +30,24 @@ void GPIO_MainInit(void)
 	GPIO_MainHandle.GPIO_Config.PinNumber=5;
 
 	GPIO_Init(&GPIO_MainHandle);
+
+
 }
 
 int main(void)
 {
 
 	GPIO_MainInit();
+	NVIC_ControlPeripheral(40, ENABLE);
+	EXTI_Init(GPIOC, 13, EXTI_MODE_IT_RE);
 
-	RCC->PLLCFGR |= (336<<5);
-	//GPIO_WriteToPin(GPIOA, 5, SET);
 
     /* Loop forever */
-	//for(;;);
+	while(1){
+
+	}
+}
+void EXTI15_10_IRQHandler(void){
+	EXTI_ClearPending(13);
+	GPIO_TogglePin(GPIOA, 5);
 }

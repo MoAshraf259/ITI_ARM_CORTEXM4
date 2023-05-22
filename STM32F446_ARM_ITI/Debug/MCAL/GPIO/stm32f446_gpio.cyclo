@@ -1,8 +1,8 @@
 stm32f446_gpio.c:11:13:GPIO_EnablePeriClock	8
-stm32f446_gpio.c:43:6:GPIO_Init	3
-stm32f446_gpio.c:102:6:GPIO_WriteToPin	2
-stm32f446_gpio.c:112:6:GPIO_WriteToPort	1
-stm32f446_gpio.c:116:6:GPIO_WriteToPinFAST	3
-stm32f446_gpio.c:128:9:GPIO_ReadFromPin	2
-stm32f446_gpio.c:140:10:GPIO_ReadFromPort	1
-stm32f446_gpio.c:149:6:GPIO_TogglePin	1
+stm32f446_gpio.c:43:6:GPIO_Init	2
+stm32f446_gpio.c:97:6:GPIO_WriteToPin	2
+stm32f446_gpio.c:107:6:GPIO_WriteToPort	1
+stm32f446_gpio.c:111:6:GPIO_WriteToPinFAST	3
+stm32f446_gpio.c:123:9:GPIO_ReadFromPin	2
+stm32f446_gpio.c:135:10:GPIO_ReadFromPort	1
+stm32f446_gpio.c:144:6:GPIO_TogglePin	1
