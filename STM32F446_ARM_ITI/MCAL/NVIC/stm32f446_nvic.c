@@ -14,12 +14,14 @@ uint32_t pass=0x05FA;
 
 void NVIC_Init(uint8_t Num_Of_GroupBits)
 {
-	RCB_AIRCR = ((pass<<16)|(PRIGROUP[Num_Of_GroupBits]<<8));
+	//The pass used to access the REGISTER  & Num_Of_GroupBits is the Shifted until met
+	RCB_AIRCR = ((pass<<16) |( PRIGROUP[Num_Of_GroupBits]<<8));
 }
 
 
 void NVIC_ControlPeripheral(uint8_t IRQ,uint8_t EnOrDis){
 	uint8_t temp1,temp2;
+
 
 	temp1=IRQ/32;
 	temp2=IRQ%32;

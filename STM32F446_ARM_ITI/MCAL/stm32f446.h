@@ -9,6 +9,7 @@
 #define STM32F446_H_
 
 #include <stdint.h>
+#include <stddef.h>
 #define __vo volatile
 
 #define SET		1
@@ -49,6 +50,7 @@
 
 #define SYSCFG_BASEADDR					(0x40013800)
 
+#define SYSTICK_BASEADDR				(0xE000E010)
 typedef struct
 {
 	__vo uint32_t MODER;                 /*!< GPIO port mode register,      Address offset: 0x00      */
@@ -127,9 +129,20 @@ typedef struct{
 	__vo uint32_t SYSCFG;
 	__vo uint32_t PMC;
 	__vo uint32_t EXTICR[4];
+	uint32_t Reserved1[3];
 	__vo uint32_t CMPCR;
+	uint32_t Reserved2[3];
 	__vo uint32_t CFGR;
 }SYSCFG_RegDef_t;
+
+typedef struct{
+	__vo uint32_t CTRL;
+	__vo uint32_t LOAD;
+	__vo uint32_t VAL;
+	__vo uint32_t CALIB;
+}SysTick_RegDef_t;
+
+#define SysTick				((SysTick_RegDef_t*)SYSTICK_BASEADDR)
 
 #define SYSCFG				((SYSCFG_RegDef_t*)SYSCFG_BASEADDR)
 #define EXTI				((EXTI_RegDef_t*)EXTI_BASEADDR)
@@ -175,8 +188,21 @@ typedef struct{
 									(x==GPIOG)?	6:\
 									(x==GPIOH)?	7:0)
 
+#define IRQ_EXTI0		6
+#define IRQ_EXTI1		7
+#define IRQ_EXTI2		8
+#define IRQ_EXTI3		9
+#define IRQ_EXTI4		10
+#define IRQ_EXTI9_5		23
+#define IRQ_EXTI15_10	40
+#define IRQ_ADC			18
+
+
+
+
 #include "stm32f446_rcc.h"
 #include "stm32f446_gpio.h"
 #include "stm32f446_nvic.h"
 #include "stm32f446_exti.h"
+#include "stm32f446_systick.h"
 #endif /* STM32F446_H_ */

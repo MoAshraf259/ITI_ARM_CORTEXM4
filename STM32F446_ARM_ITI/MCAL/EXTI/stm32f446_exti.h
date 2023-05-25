@@ -15,7 +15,9 @@
 #define EXTI_MODE_IT_FRE		3
 
 
-void EXTI_Init(GPIO_RegDef_t *pGPIOx,uint8_t PinNumber,uint8_t InterruptPhase);
+void EXTI_Init(GPIO_RegDef_t *pGPIOx , uint8_t PinNumber , void (*APP)(void));
+void EXTI_InterruptType(uint8_t PinNumber,uint8_t InterruptPhase);
 void EXTI_ClearPending(uint8_t PinNumber);
+void EXTI_SetSofwareINT(uint8_t PinNumber);
 
 #endif /* EXTI_STM32F446_EXTI_H_ */
