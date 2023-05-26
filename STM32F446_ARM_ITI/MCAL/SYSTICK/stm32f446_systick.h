@@ -18,9 +18,9 @@
 
 
 void Systick_TimerSync(uint32_t Timer);
-void Systick_TimerAsync(uint32_t Timer);
+void Systick_TimerAsync(uint32_t Timer,void (*ApplicationCallBack)(void));
 uint32_t Systick_GetCurrentCount(void);
-void Systick_ResetCounter(void);
+
 void Systick_EnterValue(uint32_t Count);
-void SysTick_Init(uint8_t ClockSource,uint8_t EnOrDis,uint8_t SyncOrAsync);
+void SysTick_Init(uint8_t ClockSource,uint8_t SyncOrAsync,uint8_t EnOrDis);
 #endif /* SYSTICK_STM32F446_SYSTICK_H_ */

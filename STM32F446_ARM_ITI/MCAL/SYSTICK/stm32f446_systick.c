@@ -8,7 +8,11 @@
 
 #include "stm32f446_systick.h"
 
-void SysTick_Init(uint8_t ClockSource,uint8_t EnOrDis,uint8_t SyncOrAsync){
+void (*GlobalCallBack)(void)=NULL;
+static void Systick_DisableInterrupt(void);
+static void Systick_ResetCounter(void);
+
+void SysTick_Init(uint8_t ClockSource,uint8_t SyncOrAsync,uint8_t EnOrDis){
 
 	if(ClockSource == Systick_ClockSource_AHB){
 		SysTick->CTRL |= (1<<2);
@@ -34,6 +38,7 @@ void SysTick_Init(uint8_t ClockSource,uint8_t EnOrDis,uint8_t SyncOrAsync){
 
 void Systick_EnterValue(uint32_t Count){
 
+	Systick_ResetCounter();
 	SysTick->LOAD = Count;
 
 }
@@ -50,16 +55,32 @@ uint32_t Systick_GetCurrentCount(void){
 
 }
 
-void Systick_TimerAsync(uint32_t Timer){
-	/*Maximum 2087 MS*/
+void Systick_TimerAsync(uint32_t Timer,void (*ApplicationCallBack)(void)){
+
+	Systick_ResetCounter();
+	GlobalCallBack=ApplicationCallBack;
+
 	SysTick->LOAD =(2000*Timer)-1;
 	Systick_ResetCounter();
 }
 
 void Systick_TimerSync(uint32_t Timer){
+
+	Systick_DisableInterrupt();
+
+	Systick_ResetCounter();
+
 	SysTick->LOAD =(2000*Timer)-1;
+
 	Systick_ResetCounter();
 
 	while(!((SysTick->CTRL >>16) & (0x1)));
 
+}
+
+static void Systick_DisableInterrupt(void){
+	SysTick->CTRL &= ~(1<<1);
+}
+void SysTick_Handler(void){
+	GlobalCallBack();
 }
